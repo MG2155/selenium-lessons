@@ -20,9 +20,11 @@ public class MyFirstTest {
 
     @Test
     public void myFirstTest() {
-        driver.get("https://www.google.com/");
-        driver.findElement(By.name("q")).sendKeys("webdriver");
-        driver.findElement(By.name("btnK")).click();
+        driver.get("https://www.facebook.com/");
+        driver.findElement(By.id("email")).clear();
+        driver.findElement(By.id("email")).sendKeys("test@test.com");
+        driver.findElement(By.id("pass")).clear();
+        driver.findElement(By.id("pass")).sendKeys("password");
     }
 
     @After
@@ -30,6 +32,5 @@ public class MyFirstTest {
         driver.quit();
         driver = null;
     }
-    //v.1
 
 }
