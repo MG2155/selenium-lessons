@@ -1,18 +1,18 @@
 package training;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 
 public class MyFirstTest {
 
     private WebDriver driver;
 
-    @Before
+    @BeforeTest
     public void start() {
         driver = new ChromeDriver();
     }
@@ -26,7 +26,7 @@ public class MyFirstTest {
         driver.findElement(By.id("pass")).sendKeys("password");
     }
 
-    @After
+    @AfterTest
     public void stop() {
         driver.quit();
         driver = null;
