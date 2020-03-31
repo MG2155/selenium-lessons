@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="training.Task_8" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-03-31T03:51:23" hostname="DESKTOP-5EMHBBF" time="0.323">
+  <properties/>
+  <testcase name="sticker" classname="training.Task_8" time="0.323"/>
+  <system-out><![CDATA[Duck #1 has a sticker's value: NEW and amount of stickers: 1
+Duck #2 has a sticker's value: NEW and amount of stickers: 1
+Duck #3 has a sticker's value: NEW and amount of stickers: 1
+Duck #4 has a sticker's value: SALE and amount of stickers: 1
+Duck #5 has a sticker's value: NEW and amount of stickers: 1
+Duck #6 has a sticker's value: SALE and amount of stickers: 1
+Duck #7 has a sticker's value: SALE and amount of stickers: 1
+Duck #8 has a sticker's value: NEW and amount of stickers: 1
+Duck #9 has a sticker's value: NEW and amount of stickers: 1
+Duck #10 has a sticker's value: NEW and amount of stickers: 1
+Duck #11 has a sticker's value: NEW and amount of stickers: 1
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
