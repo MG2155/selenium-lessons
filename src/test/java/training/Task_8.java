@@ -24,11 +24,11 @@ public class Task_8 {
 
     @Test
     public void sticker() {
-        List<WebElement> allDucks = driver.findElements(By.cssSelector("li[class='product column shadow hover-light']"));
+        List<WebElement> allDucks = driver.findElements(By.className("product"));
         for (int i = 0; i < allDucks.size(); i++) {
-            int j = allDucks.get(i).findElements(By.cssSelector("div[class*='sticker']")).size();
-            String str = allDucks.get(i).findElement(By.cssSelector("div[class*='sticker']")).getText();
-            System.out.println("Duck #" + (i + 1) + " has a sticker's value: " + str +" and amount of stickers: " +j);
+            int j = allDucks.get(i).findElements(By.className("sticker")).size();
+            String str = allDucks.get(i).findElement(By.className("sticker")).getText();
+            System.out.println("Duck #" + (i + 1) + " has a sticker's value: " + str + " and amount of stickers: " + j);
         }
     }
 
