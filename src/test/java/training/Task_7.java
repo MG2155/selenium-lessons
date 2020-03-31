@@ -390,6 +390,8 @@ public class Task_7 {
         Thread.sleep(400);
         String vQmodsChildTitle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h1[style*='top']"))).getText();
         Assert.assertEquals(vQmodsChildTitle, "vQmods");
+
+
     }
 
     @AfterTest
@@ -397,6 +399,7 @@ public class Task_7 {
         driver.quit();
         driver = null;
     }
+
 
 
 }
