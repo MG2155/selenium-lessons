@@ -1,28 +1,26 @@
 package training;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class TestThis {
 
     private WebDriver driver;
-    private WebDriverWait wait;
 
     @BeforeTest
     public void start() throws InterruptedException {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         driver.get("http://localhost/litecart/admin/login.php");
         driver.findElement(By.cssSelector("input[name='username']")).sendKeys("admin");
         driver.findElement(By.cssSelector("input[name='password']")).sendKeys("admin");
@@ -31,19 +29,19 @@ public class TestThis {
     }
 
     @Test(priority = 1)
-    public void mainBtn() {
-        List<WebElement> allMainBtns = driver.findElements(By.cssSelector("li[id*=\"app-\"]"));
+    public void mainBtn() throws InterruptedException {
+        List<WebElement> allMainBtns = driver.findElements(By.id("app-"));
         for (int i = 0; i < allMainBtns.size(); i++) {
-            boolean result = false;
-            int attempts = 0;
-            while (attempts < 2) {
-                try {
-                    allMainBtns.get(i).click();
-                    result = true;
-                    break;
-                } catch (StaleElementReferenceException e) {
-                }
-                attempts++;
+            List<WebElement> items = driver.findElements(By.id("app-"));
+            items.get(i).click();
+            Thread.sleep(250);
+            Assert.assertNotNull(driver.findElement(By.cssSelector("h1[style*='margin']")).getText());
+            List<WebElement> other = driver.findElements(By.cssSelector("li[id*='doc']"));
+            for (int j = 0; j < other.size(); j++) {
+                List<WebElement> others = driver.findElements(By.cssSelector("li[id*='doc']"));
+                others.get(j).click();
+                Thread.sleep(250);
+                Assert.assertNotNull(driver.findElement(By.cssSelector("h1[style*='margin']")).getText());
             }
         }
     }
@@ -53,6 +51,4 @@ public class TestThis {
         driver.quit();
         driver = null;
     }
-
-
 }
