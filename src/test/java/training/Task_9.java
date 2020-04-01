@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class TestThis {
+public class Task_9 {
 
     private WebDriver driver;
 
