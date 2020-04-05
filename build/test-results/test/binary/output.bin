@@ -1,0 +1,4 @@
+IOn a landing page "Regular price" color is grey: rgba(119, 119, 119, 1)
+EOn a landing page "Campaign price" color is red: rgba(204, 0, 0, 1)
+FOn a item page "Regular price" color is grey: rgba(102, 102, 102, 1)
+BOn a item page "Campaign price" color is red: rgba(204, 0, 0, 1)
