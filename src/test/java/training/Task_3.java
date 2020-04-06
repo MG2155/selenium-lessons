@@ -22,7 +22,6 @@ public class Task_3 {
         driver.findElement(By.cssSelector("input[name='username']")).sendKeys("admin");
         driver.findElement(By.cssSelector("input[name='password']")).sendKeys("admin");
         driver.findElement(By.cssSelector("button[name='login']")).click();
-
     }
 
 //    @Test
@@ -39,4 +38,5 @@ public class Task_3 {
         driver.quit();
         driver = null;
     }
-}
+
+    }

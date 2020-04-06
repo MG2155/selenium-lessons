@@ -20,5 +20,7 @@ dependencies {
     testCompile group: 'org.slf4j', name: 'slf4j-jdk14', version: '1.7.5'
     implementation 'org.testng:testng:7.1.0'
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+
 }
 
