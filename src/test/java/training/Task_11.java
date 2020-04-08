@@ -61,6 +61,7 @@ public class Task_11 {
         sendText(email, By.cssSelector("input[name=\"email\"]"));
         sendText(pass, By.cssSelector("input[name=\"password\"]"));
         clickOn(By.cssSelector("button[name=\"login\"]"));
+        System.out.println(email + " | " +pass);
     }
 
 
