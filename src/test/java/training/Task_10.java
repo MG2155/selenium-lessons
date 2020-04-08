@@ -8,6 +8,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class Task_10 {
@@ -33,26 +34,26 @@ public class Task_10 {
         String elementCampaignPrice = driver.findElement(By.xpath("//div[@id=\"box-campaigns\"]/div/ul/li/a/div[@class=\"price-wrapper\"]/strong")).getAttribute("textContent");
         //Regular price color on the main page
         String regPriceColor = driver.findElement(By.xpath("//div[@id=\"box-campaigns\"]//s[@class=\"regular-price\"]")).getCssValue("color");
-        String[] grey = new String[256];
-        for (int i = 0; i < 256; i++) {
-            grey[i] = "rgba(" + i + ", " + i + ", " + i + ", 1)";
-            if (grey[i].equals(regPriceColor)) {
-                System.out.println("On a landing page \"Regular price\" color is grey: " + grey[i]);
-            }
-        }
+        String rgbaNumbers = regPriceColor.replaceAll("[rgba(,)]", "");
+        int[] numbers = Arrays.stream(rgbaNumbers.split("\\s"))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+        Assert.assertEquals(numbers[0], numbers[1]);
+        Assert.assertEquals(numbers[1], numbers[2]);
+
         //Text-decoration of the regular price  on the main page
         Assert.assertTrue(driver.findElement(By.xpath("//div[@id=\"box-campaigns\"]//s[@class=\"regular-price\"]")).getCssValue("text-decoration").contains("line-through"));
         //font-weight
         Assert.assertTrue(driver.findElement(By.className("price-wrapper")).getCssValue("font-weight").contains("700"));
         //Campaign price color on the main page
         String campaignPriceColor = driver.findElement(By.xpath("//div[@id=\"box-campaigns\"]//strong[@class=\"campaign-price\"]")).getCssValue("color");
-        String[] red = new String[256];
-        for (int i = 0; i < 256; i++) {
-            red[i] = "rgba(" + i + ", 0, 0, 1)";
-            if (red[i].equals(campaignPriceColor)) {
-                System.out.println("On a landing page \"Campaign price\" color is red: " + red[i]);
-            }
-        }
+        String rgbaNumbers2 = campaignPriceColor.replaceAll("[rgba(,)]", "");
+        int[] numbers2 = Arrays.stream(rgbaNumbers2.split("\\s"))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+        Assert.assertEquals(0, numbers2[2]);
+        Assert.assertEquals(numbers2[1], numbers2[2]);
+
 
         //Price font size on the main Page
         String regsize = driver.findElement(By.xpath("//div[@id=\"box-campaigns\"]//s[@class=\"regular-price\"]")).getCssValue("font-size");
@@ -66,26 +67,26 @@ public class Task_10 {
         driver.findElement(By.xpath("//div[@id=\"box-campaigns\"]/div/ul/li")).click();
 
         String regPriceColor2 = driver.findElement(By.cssSelector("s[class=\"regular-price\"]")).getCssValue("color");
-        String[] grey2 = new String[256];
-        for (int i = 0; i < 256; i++) {
-            grey2[i] = "rgba(" + i + ", " + i + ", " + i + ", 1)";
-            if (grey2[i].equals(regPriceColor2)) {
-                System.out.println("On a item page \"Regular price\" color is grey: " + grey2[i]);
-            }
-        }
+        String rgbaNumbers3 = regPriceColor2.replaceAll("[rgba(,)]", "");
+        int[] numbers3 = Arrays.stream(rgbaNumbers3.split("\\s"))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+        Assert.assertEquals(numbers3[0], numbers3[1]);
+        Assert.assertEquals(numbers3[1], numbers3[2]);
         //Text-decoration of the regular price  on the main page
         Assert.assertTrue(driver.findElement(By.cssSelector("s[class=\"regular-price\"]")).getCssValue("text-decoration").contains("line-through"));
         //font-weight
         Assert.assertTrue(driver.findElement(By.className("campaign-price")).getCssValue("font-weight").contains("700"));
         //Campaign price color on the main page
-        String campaignPriceColor2 = driver.findElement(By.cssSelector("strong[class=\"campaign-price\"]")).getCssValue("color");
-        String[] red2 = new String[256];
-        for (int i = 0; i < 256; i++) {
-            red2[i] = "rgba(" + i + ", 0, 0, 1)";
-            if (red2[i].equals(campaignPriceColor2)) {
-                System.out.println("On a item page \"Campaign price\" color is red: " + red2[i]);
-            }
-        }
+        String campaignPriceColor4 = driver.findElement(By.cssSelector("strong[class=\"campaign-price\"]")).getCssValue("color");
+        System.out.println("********************");
+        System.out.println(campaignPriceColor4);
+        String rgbaNumbers4 = campaignPriceColor4.replaceAll("[rgba(,)]", "");
+        int[] numbers4 = Arrays.stream(rgbaNumbers4.split("\\s"))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+        Assert.assertEquals(0, numbers4[2]);
+        Assert.assertEquals(numbers4[1], numbers4[2]);
 
         String elementTitleTwo = driver.findElement(By.xpath("//h1[@class=\"title\"]")).getAttribute("textContent");
         String itemRegPrice = driver.findElement(By.className("regular-price")).getAttribute("textContent");
